@@ -7,13 +7,26 @@ import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import javax.inject.Inject;
 
+import com.stefanini.model.Endereco;
+import com.stefanini.model.Perfil;
 import com.stefanini.model.Pessoa;
+import com.stefanini.model.PessoaPerfil;
+import com.stefanini.servico.EnderecoServico;
+import com.stefanini.servico.PerfilServico;
 import com.stefanini.servico.PessoaServico;
 
 public class App {
 
+	
 	@Inject
-	private PessoaServico servico;
+	private EnderecoServico servicoEnd;
+	
+	@Inject
+	private PerfilServico servicoPer;
+	
+	
+	@Inject
+	private PessoaServico servicoPesPer;
 
 	public static void main(String[] args) {
 		// CONFIGURACAO PARA INICIAR O CONTAINER PARA GERENCIAMENTO DO CDI
@@ -27,11 +40,10 @@ public class App {
 	public void executar() {
 		buscarTodos();
 //		encontrar();
-//		salvar();
+		salvar();
 //		remover();
 	}
-	
-	
+
 	private void remover() {
 		servico.remover(5L);
 	}
@@ -57,10 +69,21 @@ public class App {
 	}
 
 	public void salvar() {
+		@SuppressWarnings("deprecation")
+		java.sql.Timestamp dataAlTer = new java.sql.Timestamp(2020, 03, 07, 18, 18, 12, 11);
+		
+		@SuppressWarnings("deprecation")
+		java.sql.Timestamp dataIncl = new java.sql.Timestamp(2018, 11, 11, 14, 15, 11, 10);
 
-//		Pessoa pessoa = new Pessoa("JOAO", LocalDate.of(1995, 8, 24));
-//		pessoa.setEmail("joaom.dev@hotmail.com");
-//		servico.salvar(pessoa);
+		Pessoa pessoa = new Pessoa("Tony1", "tony1@gmail.com", LocalDate.of(19996, 06, 18), true);
+		servico.salvar(pessoa);
+		
+		Endereco endereco = new Endereco(null,"Rua 20 ","Lote 17","Chácaras21","Novo Gama","GO","72860850",pessoa);
+		
+		Perfil perfil = new Perfil("Não Sei","Descrição",dataAlTer,dataIncl);
+		
+		PessoaPerfil pessoaPerfil = new PessoaPerfil(pessoa,perfil);
+		
 
 	}
 

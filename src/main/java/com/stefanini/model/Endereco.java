@@ -1,9 +1,15 @@
 package com.stefanini.model;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_endereco")
@@ -40,8 +46,25 @@ public class Endereco implements Serializable {
 
     @Column(name = "DS_LOGRADOURO")
     private String logradouro;
+    
+    
 
-    @ManyToOne
+    public Endereco(Long id, String cep, String uf, String localidade, String bairro, String complemento,
+			String logradouro, Pessoa pessoa) {
+		super();
+		this.id = id;
+		this.cep = cep;
+		this.uf = uf;
+		this.localidade = localidade;
+		this.bairro = bairro;
+		this.complemento = complemento;
+		this.logradouro = logradouro;
+		this.pessoa = pessoa;
+	}
+
+
+
+	@ManyToOne
     @JoinColumn(name = "co_seq_pessoa", referencedColumnName = "co_seq_pessoa", nullable = false)
     private Pessoa pessoa;
 

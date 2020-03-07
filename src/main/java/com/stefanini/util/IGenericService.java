@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import com.stefanini.model.Perfil;
+
 public interface IGenericService<T, I extends Serializable> {
 
 	/**
@@ -26,7 +28,11 @@ public interface IGenericService<T, I extends Serializable> {
 	 *  Remover uma entidade
 	 * @param id
 	 */
+<<<<<<< HEAD
 	void remover(@Valid I id);
+=======
+	//void remover(I id);
+>>>>>>> 0b490732aaac42339458ca5331daa860d2e5bef0
 
 	/**
 	 * Obter uma Lista
@@ -40,5 +46,9 @@ public interface IGenericService<T, I extends Serializable> {
 	 * @return
 	 */
 	Optional<T> encontrar(I id);
+
+	//Perfil remover(@Valid Long id);
+
+	
 
 }

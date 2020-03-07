@@ -31,21 +31,29 @@ public class App {
 	public static void main(String[] args) {
 		// CONFIGURACAO PARA INICIAR O CONTAINER PARA GERENCIAMENTO DO CDI
 		SeContainerInitializer initializer = SeContainerInitializer.newInstance();
-		try (final SeContainer container = initializer.initialize()) {
-			App app = container.select(App.class).get();
-			app.executar();
-		}
+		SeContainer container = initializer.initialize();
+		
+		App app = container.select(App.class).get();
+		app.executar();
+		
+		
+		System.out.println("hello");
 	}
 
 	public void executar() {
 		buscarTodos();
 //		encontrar();
+<<<<<<< HEAD
 		salvar();
 //		remover();
+=======
+//		salvar();
+		//remover();
+>>>>>>> 0b490732aaac42339458ca5331daa860d2e5bef0
 	}
 
 	private void remover() {
-		servico.remover(5L);
+		//servico.remover(5L);
 	}
 
 	private void encontrar() {

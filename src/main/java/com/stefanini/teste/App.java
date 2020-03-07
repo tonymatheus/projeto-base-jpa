@@ -2,7 +2,7 @@ package com.stefanini.teste;
 
 import java.time.LocalDate;
 import java.util.Optional;
-
+//
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import javax.inject.Inject;
@@ -14,8 +14,8 @@ public class App {
 
 	@Inject
 	private PessoaServico servico;
-
 	public static void main(String[] args) {
+		
 		// CONFIGURACAO PARA INICIAR O CONTAINER PARA GERENCIAMENTO DO CDI
 		SeContainerInitializer initializer = SeContainerInitializer.newInstance();
 		try (final SeContainer container = initializer.initialize()) {
